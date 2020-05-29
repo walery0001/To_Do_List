@@ -1,0 +1,131 @@
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript">/* <![CDATA[ */
+    accConf = { "events": { "endpointPaths": ["/a8f4d8cd95e164917035b64b867a45dd"] } };
+/* ]]> */</script>
+
+  <title>samonauka</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    .firstBox {
+      background-color: cornsilk;
+      width: 70%;
+      height: auto;
+      margin: 40px auto;
+      padding: 30px 0px 30px 0px;
+    }
+
+    .secondBox {
+      width: 50%;
+      height: 10%;
+      margin: 50px auto;
+      padding: 40px 0px 0px 20px;
+      background-color: brown;
+    }
+
+    .thirdBox {
+      width: 50%;
+      height: auto;
+      margin: 50px auto;
+      padding: 5px 0px 5px 20px;
+      background-color: brown;
+    }
+
+    .delete {
+      padding-right: 20px;
+      float: right;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="firstBox">
+    <div class="secondBox">
+      <input type="text" id="input" placeholder="new duties!" name="duty">
+      <button onclick="addDuty()">ADD</button>
+    </div>
+    <div class="thirdBox">
+      <ul id="dutyList">
+
+        <li> <input type="checkbox" onclick="done(this)">
+          <label>lerning java script</label>
+          <span class="delete" onclick="deleteDuty(this)">Delete</span>
+        </li>
+        <li> <input type="checkbox" onclick="done(this)">
+          <label>lerning englisch</label>
+          <span class="delete" onclick="deleteDuty(this)">Delete</span>
+        </li>
+        <li> <input type="checkbox" onclick="done(this)">
+          <label>lerning css and html</label>
+          <span class="delete" onclick="deleteDuty(this)">Delete</span>
+        </li>
+    </div>
+
+
+
+  </div>
+
+  <script>
+
+
+
+    function addDuty() {
+      newDuty = document.getElementById('input').value;
+      document.getElementById("input").value = " ";
+
+      newLi = document.createElement("li");
+      newlabel = document.createElement("label");
+      newInput = document.createElement("input");
+      newSpan = document.createElement("span")
+
+      newlabel.innerHTML = newDuty;
+
+      newSpan.innerHTML = "Delete";
+      newSpan.setAttribute("onclick", "deleteDuty(this)");
+      newInput.setAttribute("onclick", "done(this)");
+      newSpan.setAttribute("class", "delete");
+
+
+      newInput.setAttribute("type", "checkbox");
+
+      newLi.appendChild(newInput);
+      newLi.appendChild(newlabel);
+      newLi.appendChild(newSpan);
+
+      dutyList = document.getElementById("dutyList");
+      dutyList.insertBefore(newLi, dutyList.children[0]);
+    }
+
+
+    function deleteDuty(element) {
+      element.parentNode.remove();
+    }
+    klikam = 10;
+
+    function done(element) {
+      if (klikam == 10) {
+        klikam = 1;
+        element.nextElementSibling.setAttribute("style", "text-decoration:line-through;");
+       
+      }
+      else {
+        klikam = 10;
+        element.nextElementSibling.setAttribute("style", "text-decoration:none;");
+        
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>
